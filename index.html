@@ -177,23 +177,23 @@
 
 <body>
 
-   <h1>🎱 BILLIARD</h1>
+   <h1>🎱 Билард</h1>
 
    <script>
       for (let i = 1; i <= 4; i++) {
          document.write(`
  <div class="timer">
- <h3>${i}-Stol</h3>
+ <h3>${i}-СТОЛ</h3>
 
- <input type="text" placeholder="Sharh yozish(majburiy)">
+ <input type="text" placeholder="Шарҳ ёзиш(мажбурий)">
 
- <p><span class="status">⏸ To‘xtagan</span></p>
- <p>Vaqt: <span class="time">00:00:00:000</span></p>
- <p>Summa: <span class="cost">0</span> so‘m</p>
+ <p><span class="status">⏸ Паузада</span></p>
+ <p>ВАҚТ: <span class="time">00:00:00:000</span></p>
+ <p>СУММАСИ: <span class="cost">0</span> СОМ</p>
 
- <button class="start" onclick="start(this)">Start</button>
- <button class="stop" onclick="stop(this)">Stop</button>
- <button class="reset" onclick="resetT(this)">Reset</button>
+ <button class="start" onclick="start(this)">Бошлаш</button>
+ <button class="stop" onclick="stop(this)">Тохтатиш</button>
+ <button class="reset" onclick="resetT(this)">Тозлаш</button>
  </div>
  `)
       }
@@ -202,15 +202,15 @@
    <div id="dataBtn" onclick="openTab()">📦</div>
 
    <div id="dataTab">
-      <h2>📊 DATA PACK</h2>
-      <div class="clearAll" onclick="clearAll()">🗑 Barchasini tozalash</div>
+      <h2>📊 Маълумотлар</h2>
+      <div class="clearAll" onclick="clearAll()">🗑 Барчасини тозалаш</div>
       <button onclick="closeTab()" style="background: #4f5150;color: #fff;"><span style="color: red;">❌</span>
-         Yopish</button>
+        Ёпиш</button>
       <div id="logs"></div>
    </div>
 
    <script>
-      const RATE = 30000;
+      const RATE = 40000;
       const LOG_KEY = "billiard_logs";
       const STATE_KEY = "billiard_state";
       const timers = new Map();
@@ -224,7 +224,7 @@
 
          const comment = box.querySelector("input").value.trim();
          if (!comment) {
-            alert("Sharh yozilmasdan START bosib bo‘lmaydi!");
+            alert("Шарҳ ёзилмасдан БОШЛАБ бўлмайди!");
             return;
          }
 
@@ -237,7 +237,7 @@
          box.running = true;
 
          box.querySelector(".status").innerText =
-            "🟢 Boshlandi: " + new Date(now).toLocaleTimeString();
+            "🟢 БОШЛАНДИ: " + new Date(now).toLocaleTimeString();
 
          runTimer(box);
          saveState();
@@ -276,7 +276,7 @@
 
          box.startTime = null;
          box.querySelector(".status").innerText =
-            "⏹ To‘xtadi: " + new Date(stopTime).toLocaleTimeString();
+            "⏹ ТЎХТАГАН ВАҚТИ: " + new Date(stopTime).toLocaleTimeString();
 
          saveState();
       }
@@ -299,7 +299,7 @@
          box.querySelector("input").value = "";
          box.querySelector(".time").innerText = "00:00:00:000";
          box.querySelector(".cost").innerText = "0";
-         box.querySelector(".status").innerText = "⏸ To‘xtagan";
+         box.querySelector(".status").innerText = "⏸ ТЎХТАГАН ";
 
          saveState();
       }
@@ -372,7 +372,7 @@
             box.comment = s.comment;
 
             box.querySelector("input").value = s.comment || "";
-            box.querySelector(".status").innerText = s.status || "⏸ To‘xtagan";
+            box.querySelector(".status").innerText = s.status || "⏸ ТЎХТАГАН";
 
             // UI ni tiklaymiz
             updateUI(box, box.elapsed);
@@ -408,7 +408,7 @@
    ⏹ ${l.stop}<br>
    ⏱ ${l.vaqt}<br>
    💰 ${l.summa} so‘m
-   <div class="del" onclick="deleteOne(${i})">❌ O‘chirish</div>
+   <div class="del" onclick="deleteOne(${i})">❌ ЎЧИРИШ</div>
   `;
             box.appendChild(d);
          });
@@ -420,7 +420,7 @@
          renderLogs();
       }
       function clearAll() {
-         if (!confirm("Barchasi o‘chirilsinmi?")) return;
+         if (!confirm("БАРЧАСИНИ ЎЧИРСИНМИ?")) return;
          localStorage.removeItem(LOG_KEY);
          renderLogs();
       }
